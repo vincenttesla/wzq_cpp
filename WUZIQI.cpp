@@ -8,6 +8,8 @@ Game game;
 Chessboard CB;
 int judge(int x, int y);
 bool isOver(int who);
+void AI(int &x, int &y);
+bool jinshou(int x, int y);
 
 int main(){
     game = Game();
@@ -30,6 +32,8 @@ int main(){
                     cout<<"坐标不合法,请重下！";
                 }else if(jud == 2){
                     cout<<"重复落子,请重下！";
+                }else if(jud == 3){
+                    cout<<"该位置为禁手区，请重下！";
                 }
             }
             CB.CBrenew(x,y,1);
@@ -48,6 +52,8 @@ int main(){
                     cout<<"坐标不合法,请重下！";
                 }else if(jud == 2){
                     cout<<"重复落子,请重下！";
+                }else if(jud == 3){
+                    cout<<"该位置为禁手区，请重下！";
                 }
             }
             CB.CBrenew(x,y,2);
@@ -59,7 +65,41 @@ int main(){
         }
         game.over();
         }else{//人机
-
+            while(true){
+            int x,y,y2;
+            int jud = 1;
+            while(jud){//人
+                cout<<"1P请落子:";
+		        cin>>x>>y2;
+                y=y2-97;//PY.coordinate();
+                jud = judge(x,y);
+                if(jud == 1){
+                    cout<<"坐标不合法,请重下！";
+                }else if(jud == 2){
+                    cout<<"重复落子,请重下！";
+                }else if(jud == 3){
+                    cout<<"该位置为禁手区，请重下！";
+                }
+            }
+            CB.CBrenew(x,y,1);
+            CB.CBprint();
+            if(isOver(1)){
+                game.winner = 1;
+                break;
+            }
+            jud = 1;
+            while(jud){//机
+                cout<<"机器人落子"<<endl;
+                AI(x,y);
+            }
+            CB.CBrenew(x,y,2);
+            CB.CBprint();
+            if(isOver(2)){
+                game.winner = 2;
+                break;
+            }
+        }
+        game.over();
         }
     }
     game.end();
@@ -69,6 +109,7 @@ int main(){
 int judge(int x, int y){
     if(x>14 || x < 0 || y>14 || y<0) return 1;//越界
     if(CB.CSBD[x][y].getValue() != 0) return 2;//重复落子
+    if(jinshou(x,y)) return 3;//禁手区域
     return 0;
 }
 
@@ -150,5 +191,13 @@ bool isOver(int who){
            return true;
     }
 
+    return false;
+}
+
+void AI(int &x, int &y){
+
+}
+
+bool jinshou(int x, int y){
     return false;
 }
