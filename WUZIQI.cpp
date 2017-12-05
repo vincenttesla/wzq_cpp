@@ -1,11 +1,13 @@
 #include "Game.h"
 #include "Chessboard.h"
+#include "AI.h"
 #include <iostream>
 
 using namespace std;
 
 Game game;
 Chessboard CB;
+AI Ai;
 int judge(int x, int y);
 bool isOver(int who);
 void AI(int &x, int &y);
@@ -14,9 +16,11 @@ bool jinshou(int x, int y);
 int main(){
     game = Game();
     CB = Chessboard();
+    Ai = Ai();
     while(game.agree){
         game.start();
         CB.CBinit();
+        Ai.aiInit();
         game.chooseMode();
         CB.CBprint();
         if(game.model){//人对人
@@ -90,7 +94,7 @@ int main(){
             jud = 1;
             while(jud){//机
                 cout<<"机器人落子"<<endl;
-                AI(x,y);
+                Ai.aiRenew(x,y,CB.CSBD,1);
             }
             CB.CBrenew(x,y,2);
             CB.CBprint();
@@ -194,10 +198,7 @@ bool isOver(int who){
     return false;
 }
 
-void AI(int &x, int &y){
-
-}
-
+//判断是否禁手的规则
 bool jinshou(int x, int y){
     return false;
 }
