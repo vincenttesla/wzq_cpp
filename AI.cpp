@@ -1,22 +1,17 @@
-
 #include <iostream>
 #include <string>
-#include "stdafx.h"
 #include "stdio.h"
 #include "math.h"
-#include "Pointer.h"
-
-
-using namespace std;
 #include "AI.h"
 
+using namespace std;
 
-AI::aiWord(int x,int y)
+int AI::aiWord(int x,int y)
 {
 	char e=2.71828;
 	return 10*(pow(e,(-0.5*(pow(x-8,2)+pow(y-8,2)))))/1; 
 }
-AI::aiInit()
+void AI::aiInit()
 {
 	for(i=0;i<15;i++)
 	{
@@ -27,9 +22,9 @@ AI::aiInit()
 	}	
 }
 //前者输入的 x横坐标； y纵坐标； value[][]是棋盘值矩阵：元素 0没子 1黑子 2白字；  n表示谁是黑子（先手）：n=0 AI黑子,t=1 AI白子
-AI::aiRenew(int &x,int &y,Pointer value[15][15],int n) 
+void AI::aiRenew(int &x,int &y,int **value,int n) 
 {
-	int m=value[x][y].getValue();
+	int m=value[x][y];
 	for(i=1;i<5;i++)
 	{
 		if (2==m+n)//从棋子向八个方向扩散高斯分布的影响因子，遇到对方棋子阻挡则中断。

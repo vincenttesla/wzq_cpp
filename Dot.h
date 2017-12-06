@@ -1,18 +1,16 @@
 #include <string>
-#include "stdio.h"
-#include "stdafx.h"
 
 using namespace std;
 
-class Pointer
+class Dot
 {
 public:
-    setCoordinate(int x, int y);
-    int getCoordinate();
-    setInfo(string gra, int value);
+    Dot(int x, int y, string gra);
+    void setCoordinate(int x, int y);
+    void setInfo(string gra, int value);
     string getGraph();
-    changeMode();
-    dropPiece(int value);
+    void changeMode();
+    void dropPiece(int value);
     int getValue();
 protected:
     string hash[4] = {"□", "■", "○", "●"};
