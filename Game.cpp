@@ -5,13 +5,12 @@ using namespace std;
 
 void Game::start() {
     cout<<"***五子棋***"<<endl;
-    chooseMode();
 }
 
 void Game::chooseMode() {
-    cout<<"1.人人对战  2.人机对战  others.退出"<<endl;
-	cout<<"请选择模式："<<endl;
-	cin>>model;
+	cout << "1.人人对战  2.人机对战  others.退出" << endl;
+	cout << "请选择模式：" << endl;
+	cin >> model;
 	if(model>2||model<1)
 		exit(-1);
 	system("cls");

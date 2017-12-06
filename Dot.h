@@ -13,7 +13,7 @@ public:
     void dropPiece(int value);
     int getValue();
 protected:
-    string hash[4] = {"□", "■", "○", "●"};
+    string hash[4] = {"O", "X", "o", "x"};
 private:
 	int x;
 	int y;

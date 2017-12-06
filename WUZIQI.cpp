@@ -18,11 +18,10 @@ int main(){
     Ai = new AI();
     while(game->agree){
         game->start();
-        CB->CBinit();
-        Ai->aiInit();
         game->chooseMode();
+        CB->CBinit();
         CB->CBprint();
-        if(game->model){//人对人
+        if(!game->model){//人对人
         while(true){
             int x,y,y2;
             int jud = 1;
@@ -68,6 +67,7 @@ int main(){
         }
         game->over();
         }else{//人机
+        Ai->aiInit();
             while(true){
             int x,y,y2;
             int jud = 1;
