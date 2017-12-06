@@ -8,8 +8,8 @@ void Game::start() {
 }
 
 void Game::chooseMode() {
-	cout << "1.人人对战  2.人机对战  others.退出" << endl;
-	cout << "请选择模式：" << endl;
+	cout <<"1pp 2pc others close"<< endl;
+	cout << "please choose model:" << endl;
 	cin >> model;
 	if(model>2||model<1)
 		exit(-1);
@@ -19,9 +19,9 @@ void Game::chooseMode() {
 
 void Game::over() {
     int m;
-    cout<<"Game Over！"<<endl;
+    cout<<"Game Over!"<<endl;
     cout<<"Winner is "<<winner<<"!"<<endl;
-    cout<<"再来一盘？1.是 others.否"<<endl;
+    cout<<"regame? 1 yes 2 no"<<endl;
 	cin>>m;
     this->agree = m == 1 ? 1 : 0;
 }

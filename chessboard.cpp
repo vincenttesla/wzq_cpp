@@ -2,22 +2,22 @@
 #include <iostream>
 
 void Chessboard::CBinit(){
-    CSBD[0][0] = new Dot(0,0,"┏");
-	CSBD[0][14] = new Dot(0,14,"┓");
-	CSBD[14][0] = new Dot(14,0,"┗");
-	CSBD[14][14] = new Dot(14,14,"┛");
+    CSBD[0][0] = new Dot(0,0,"+");
+	CSBD[0][14] = new Dot(0,14,"+");
+	CSBD[14][0] = new Dot(14,0,"+");
+	CSBD[14][14] = new Dot(14,14,"+");
 	for (int i = 1; i < 14; i++)
 	{
-		CSBD[0][i]= new Dot(0,i,"┯");
-		CSBD[14][i]= new Dot(14,i,"┷");
-		CSBD[i][0]= new Dot(i,0,"┠");
-		CSBD[i][14]= new Dot(i,14,"┨");
+		CSBD[0][i]= new Dot(0,i,"+");
+		CSBD[14][i]= new Dot(14,i,"+");
+		CSBD[i][0]= new Dot(i,0,"+");
+		CSBD[i][14]= new Dot(i,14,"+");
 	}
 	for (int i=1;i<14;i++)
 	{
 		for(int j=1;j<14;j++)
 		{
-			CSBD[i][j] = new Dot(i,j,"┼");
+			CSBD[i][j] = new Dot(i,j,"+");
 		}
 	}
 }
@@ -60,7 +60,9 @@ void Chessboard::CBprint(){
 
 int** Chessboard::getValueArr() {
 	int **a;
+	a = new int*[15];
 	for(int i=0;i<15;i++){
+		a[i] = new int[15];
 		for(int j=0;j<15;j++){
 			a[i][j] = CSBD[i][j]->getValue();
 		}

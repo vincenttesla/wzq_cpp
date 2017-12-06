@@ -26,10 +26,13 @@ int main(){
             int x,y,y2;
             int jud = 1;
             while(jud){
+				cout << "model:" << game->model << endl;
                 cout<<"1P请落子:";
 		        cin>>x>>y2;
                 y=y2-97;//PY.coordinate();
-                jud = judge(x,y);
+                //jud = judge(x,y);
+				jud = 0;
+				cout << "jud:" << jud<<endl;
                 if(jud == 1){
                     cout<<"坐标不合法,请重下！";
                 }else if(jud == 2){
@@ -92,8 +95,8 @@ int main(){
             }
             jud = 1;
             while(jud){//机
-                cout<<"机器人落子"<<endl;
-                Ai->aiRenew(x,y,CB->getValueArr(),1);
+				cout << "robot step" << endl;
+				Ai->aiRenew(x, y, CB->getValueArr(), 1);
             }
             CB->CBrenew(x,y,2);
             CB->CBprint();
